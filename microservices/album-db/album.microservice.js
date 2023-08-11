@@ -71,7 +71,42 @@ class AlbumDbMicroservice {
    * @param {express.Next} next is the middleware to continue with code execution
    * @returns {Object} Empty object if the operation went well
    */
-  updateById = async (req, res, next) => {};
+  updateById = async (req, res, next) => {
+    const documentId = req.params.id;
+    const updateData = req.body;
+
+    if (
+      check.not.assigned(updateData) ||
+      check.not.object(updateData) ||
+      check.emptyObject(updateData)
+    ) {
+      const error = new Error(
+        "A non-empty JSON body is mandatory for updating."
+      );
+      next(error);
+      return;
+    }
+
+    try {
+      const updatedDocument = await AlbumModel.findByIdAndUpdate(
+        documentId,
+        updateData,
+        { new: true }
+      )
+        .lean()
+        .exec();
+
+      if (!updatedDocument) {
+        const error = new Error("Document to update was not found.");
+        next(error);
+        return;
+      }
+
+      res.status(httpStatusCodes.OK).send(updatedDocument);
+    } catch (error) {
+      next(error);
+    }
+  };
 
   /**
    * @summary Delete a document
