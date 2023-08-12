@@ -69,7 +69,7 @@ class AlbumDbMicroservice {
    * @param {express.Request} req is the request of the operation
    * @param {express.Response} res is the response of the operation
    * @param {express.Next} next is the middleware to continue with code execution
-   * @returns {Object} Empty object if the operation went well
+   * @returns {Object} Updated object if the operation went well
    */
   updateById = async (req, res, next) => {
     const documentId = req.params.id;
