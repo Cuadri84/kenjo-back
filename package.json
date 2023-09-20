@@ -1,5 +1,5 @@
 {
-  "name": "kenjo-people-cloud-challenge",
+  "name": "your-mucic-back",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,11 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://nedose@bitbucket.org/orgos/kenjo-people-cloud-challenge.git"
+    "url": "git+https://github.com/Cuadri84/your-music-back"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/orgos/kenjo-people-cloud-challenge#readme",
   "dependencies": {
     "check-types": "^11.1.2",
     "cors": "^2.8.5",
